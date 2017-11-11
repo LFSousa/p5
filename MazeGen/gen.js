@@ -39,7 +39,7 @@ function genDraw() {
         longdist = distance;
         longest = current;
     }
-    fill(100,255,100,100);
+    fill(100,255,100);
     noStroke();
     ellipse(0.5*w+w*current.i,0.5*w+w*current.j,w/2,w/2);
     fill(255,0,255);

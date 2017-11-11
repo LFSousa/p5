@@ -38,7 +38,7 @@ function draw() {
     ellipse(alvo.x,alvo.y,20,20);
     for(var i=0; i< bars.length; i++){
         rect(bars[i][0].x, bars[i][0].y, barW, barH);
-        text(bars[i][1], bars[i][0].x,bars[i][0].y-10);
+        //text(bars[i][1], bars[i][0].x,bars[i][0].y-10);
     }
     //actives = totalTicks;
     for(var i=0; i< totalR; i++){

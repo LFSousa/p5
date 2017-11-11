@@ -1,21 +1,22 @@
 var quad;
 var obj = [];
+var colision = false;
 function setup() {
-    createCanvas(700,700);
+    createCanvas(windowWidth,windowHeight);
     quad = new Quadtree({
         x:0,
         y:0,
         width: width,
-        height: height
+        height: width
     }, 4);
-    for(var i=0;i<566;i++)
+    for(var i=0;i<50;i++)
     addObj();
 }
 
 function addObj(){
     var o = {
-        x: random(0,500),
-        y: random(0,500),
+        x: random(0,width),
+        y: random(0,height),
         width: 20,
         height: 20,
         velx: random(-2,2),
@@ -37,22 +38,26 @@ function update(o){
 }
 function draw() {
     background(50);
-    noFill();
+    if(colision)
+        fill(255);
+    else
+        noFill();
     stroke(255);
     var cur = {
         x: mouseX,
         y: mouseY,
-        width: 20,
-        height: 20
+        width: 40,
+        height: 40
     }
-    rect(cur.x, cur.y, cur.width, cur.height);
+    ellipse(cur.x, cur.y, cur.width, cur.height);
+    colision = false;
     fill(255);
     noStroke();
 
     var can = quad.retrieve(cur);
     for(var i=0;i<can.length;i++){
         can[i].alpha = 255;
-        if(dist(can[i].x,can[i].y,cur.x,cur.y) < 10) can[i].x+=random(-1,1);
+        if(dist(can[i].x,can[i].y,cur.x,cur.y) < 10+cur.height/2) colision = true;
     }
     //console.log(can);
     for(var i=0;i<obj.length;i++){

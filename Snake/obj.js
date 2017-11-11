@@ -24,7 +24,7 @@ function Node(x,y,head=false){
     this.draw = function(){
         var p;
         if((p=this.checkColision())!=-1){
-            if(head) fruits.push({x:floor(random(0,board_size/node_size)),y:floor(random(0,board_size/node_size))}), this.add(), fr++;
+            if(head) fruits.push({x:floor(random(0,width/node_size-node_size)),y:floor(random(0,height/node_size-node_size))}), this.add(), fr++;
             ellipse(this.x+node_size/2,this.y+node_size/2,node_size+2);
             if(this.prev==null) fruits.splice(p,1);
         }
@@ -32,10 +32,10 @@ function Node(x,y,head=false){
             ellipse(this.x+node_size/2,this.y+node_size/2,node_size);
         this.x += this.dir.x*node_size;
         this.y += this.dir.y*node_size;
-        if(this.x > board_size-node_size) this.x = 0;
-        if(this.y > board_size-node_size) this.y = 0;
-        if(this.x < 0) this.x = board_size-node_size;
-        if(this.y < 0) this.y = board_size-node_size;
+        if(this.x > width-node_size) gameEnd();
+        if(this.y > height-node_size) gameEnd();
+        if(this.x < 0) this.x = gameEnd();
+        if(this.y < 0) this.y = gameEnd();
 
         if(this.prev != null)this.prev.draw(), this.prev.dir = this.dir;
         this.checkNodeColision(this.x,this.y);
