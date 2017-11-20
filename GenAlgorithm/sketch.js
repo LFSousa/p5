@@ -5,7 +5,7 @@ var scr, inputs;
 var pool = [];
 var geracao = 1;
 var totalR = 1000;
-var totalTicks = 600;
+var totalTicks = 1000;
 var bars = [];
 var barW = 200;
 var barH = 10;
@@ -13,16 +13,19 @@ var mutf = 0.01;
 var velocity = 0.6;
 var actives = totalR;
 function setup() {
-    createCanvas(500,400);
+    createCanvas(500,600);
     newGen();
     alvo = createVector(width/2, 30);
     scr = createP();
     //inputs = createP();
+    bars.push([createVector(0,400), 25]);
+    bars.push([createVector(200,400), 25]);
+    bars.push([createVector(300,300), 30]);
+    bars.push([createVector(100,300), 30]);
     bars.push([createVector(0,200), 20]);
     bars.push([createVector(200,200), 20]);
     bars.push([createVector(300,100), 10]);
     bars.push([createVector(100,100), 10]);
-    bars.push([createVector(500,100), 10]);
 }
 
 function newGen(){
