@@ -5,7 +5,7 @@ var scr, inputs;
 var pool = [];
 var geracao = 1;
 var totalR = 1000;
-var totalTicks = 1000;
+var totalTicks = 900;
 var bars = [];
 var barW = 200;
 var barH = 10;
